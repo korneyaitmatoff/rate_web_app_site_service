@@ -3,6 +3,8 @@ from typing_extensions import TypedDict
 
 from pydantic import BaseModel
 
+from src.database.tables import EnumCategories
+
 
 class Site(BaseModel):
     """Модель сайта"""
@@ -11,6 +13,7 @@ class Site(BaseModel):
     description: Optional[str]
     url: str
     user_id: int
+    category: EnumCategories
 
 
 class SiteDict(TypedDict):
@@ -19,3 +22,4 @@ class SiteDict(TypedDict):
     description: Optional[str]
     url: str
     user_id: int
+    category: EnumCategories
