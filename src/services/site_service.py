@@ -1,11 +1,11 @@
 from fastapi.exceptions import HTTPException
 
-from src.services.service import Service
-from src.schemas.site import SiteDict, Site
-from src.repositories.repository import Repository
 from api.user_api import UserApi
 from api.comment_api import CommentApi
 from api.validation_api import ValidationApi
+from src.services.service import Service
+from src.schemas.site import SiteDict, Site, EnumCategories
+from src.repositories.repository import Repository
 
 
 class SiteService(Service):
@@ -57,3 +57,6 @@ class SiteService(Service):
             "comments": comments,
             "validation": validation
         }
+
+    def get_sites_by_category(self, category: EnumCategories):
+        return self.repository.read(filters=(self.repository.table.category == category,))

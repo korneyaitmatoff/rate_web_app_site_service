@@ -4,15 +4,9 @@ from datetime import datetime
 from sqlalchemy import Column, VARCHAR, TIMESTAMP, Integer, ForeignKey, Text, Enum
 from sqlalchemy.ext.declarative import declarative_base
 
+from src.schemas.site import EnumCategories
+
 Base = declarative_base()
-
-
-class EnumCategories(enum.Enum):
-    """Перечисление списка категорий сайтов"""
-    blog = "blog"
-    shop = "shop"
-    social_net = "social_net"
-    other = "other"
 
 
 class User(Base):

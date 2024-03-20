@@ -1,9 +1,16 @@
+from enum import StrEnum
 from typing import Optional
 from typing_extensions import TypedDict
 
 from pydantic import BaseModel
 
-from src.database.tables import EnumCategories
+
+class EnumCategories(StrEnum):
+    """Перечисление списка категорий сайтов"""
+    blog = "blog"
+    shop = "shop"
+    social_net = "social_net"
+    other = "other"
 
 
 class Site(BaseModel):
