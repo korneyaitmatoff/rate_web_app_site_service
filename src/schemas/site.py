@@ -1,11 +1,11 @@
-from enum import StrEnum
+from enum import Enum
 from typing import Optional
 from typing_extensions import TypedDict
 
 from pydantic import BaseModel
 
 
-class EnumCategories(StrEnum):
+class EnumCategories(Enum):
     """Перечисление списка категорий сайтов"""
     blog = "blog"
     shop = "shop"
