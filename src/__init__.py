@@ -72,6 +72,12 @@ app.register_routes([
                 "description": "Получение списка сайтов по категории", "methods": ['GET'],
                 "endpoint": site_service.get_sites_by_category
             },
+            {
+                "path": "/stat/{site_id}",
+                "responses": {400: {"description": "Bad request"}},
+                "description": "Получение статистики сайта", "methods": ['GET'],
+                "endpoint": site_service.get_site_stat
+            }
         ]
     ).get_router()
 ])

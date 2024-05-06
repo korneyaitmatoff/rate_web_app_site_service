@@ -49,7 +49,7 @@ class SiteService(Service):
 
         user = UserApi().get_user_by_id(id=data.user_id)
         comments = CommentApi().get_comments_by_site_id(id=data.id)
-        validation = ValidationApi().get_logs_by_site_id(id=data.id)
+        validation = ValidationApi().get_logs_by_site_id(site_id=data.id)
 
         return {
             "user": user,
@@ -60,3 +60,9 @@ class SiteService(Service):
 
     def get_sites_by_category(self, category: EnumCategories):
         return self.repository.read(filters=(self.repository.table.category == category,))
+
+    def get_site_stat(self, site_id: int):
+        return {
+            "html": ValidationApi().get_css_stat(site_id=site_id),
+            "css": ValidationApi().get_html_stat(site_id=site_id),
+        }
