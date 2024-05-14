@@ -49,13 +49,15 @@ class SiteService(Service):
 
         user = UserApi().get_user_by_id(id=data.user_id)
         comments = CommentApi().get_comments_by_site_id(id=data.id)
-        validation = ValidationApi().get_logs_by_site_id(site_id=data.id)
 
         return {
             "user": user,
             "data": data,
             "comments": comments,
-            "validation": validation
+            "validation": {
+                "html":  ValidationApi().get_html_logs_by_site_id(site_id=data.id),
+                "css":  ValidationApi().get_css_logs_by_site_id(site_id=data.id)
+            }
         }
 
     def get_sites_by_category(self, category: EnumCategories):
