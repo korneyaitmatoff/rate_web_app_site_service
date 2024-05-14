@@ -63,6 +63,6 @@ class SiteService(Service):
 
     def get_site_stat(self, site_id: int):
         return {
-            "html": ValidationApi().get_css_stat(site_id=site_id),
-            "css": ValidationApi().get_html_stat(site_id=site_id),
+            "html": ValidationApi().get_html_stat(site_id=site_id),
+            "css": ValidationApi().get_css_stat(site_id=site_id),
         }
